@@ -194,11 +194,13 @@ export default function Home() {
                         <Input
                           id="name"
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          onChange={(e) => setFormData({...formData, name: e.target.value.slice(0, 50)})}
                           placeholder="Введите ваше имя"
                           required
+                          maxLength={50}
                           className="border-[#bbcccc] focus:border-[#104f4f] focus:ring-[#104f4f] rounded-xl"
                         />
+                        <p className="text-xs text-gray-400">{formData.name.length}/50 символов</p>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone" className="text-[#104f4f]">Телефон</Label>
@@ -206,21 +208,25 @@ export default function Home() {
                           id="phone"
                           type="tel"
                           value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value.slice(0, 20)})}
                           placeholder="+7 (___) ___-__-__"
                           required
+                          maxLength={20}
                           className="border-[#bbcccc] focus:border-[#104f4f] focus:ring-[#104f4f] rounded-xl"
                         />
+                        <p className="text-xs text-gray-400">{formData.phone.length}/20 символов</p>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="service" className="text-[#104f4f]">Зона эпиляции</Label>
                         <Input
                           id="service"
                           value={formData.service}
-                          onChange={(e) => setFormData({...formData, service: e.target.value})}
+                          onChange={(e) => setFormData({...formData, service: e.target.value.slice(0, 100)})}
                           placeholder="Например: бикини, ноги, подмышки..."
+                          maxLength={100}
                           className="border-[#bbcccc] focus:border-[#104f4f] focus:ring-[#104f4f] rounded-xl"
                         />
+                        <p className="text-xs text-gray-400">{formData.service.length}/100 символов</p>
                       </div>
                       <Button 
                         type="submit" 
@@ -326,11 +332,13 @@ export default function Home() {
                         <Input
                           id="name2"
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          onChange={(e) => setFormData({...formData, name: e.target.value.slice(0, 50)})}
                           placeholder="Введите ваше имя"
                           required
+                          maxLength={50}
                           className="border-[#bbcccc] focus:border-[#104f4f] focus:ring-[#104f4f] rounded-xl"
                         />
+                        <p className="text-xs text-gray-400">{formData.name.length}/50 символов</p>
                       </div>
                       <div className="space-y-2">
                         <Label htmlFor="phone2" className="text-[#104f4f]">Телефон</Label>
@@ -338,11 +346,13 @@ export default function Home() {
                           id="phone2"
                           type="tel"
                           value={formData.phone}
-                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value.slice(0, 20)})}
                           placeholder="+7 (___) ___-__-__"
                           required
+                          maxLength={20}
                           className="border-[#bbcccc] focus:border-[#104f4f] focus:ring-[#104f4f] rounded-xl"
                         />
+                        <p className="text-xs text-gray-400">{formData.phone.length}/20 символов</p>
                       </div>
                       <Button 
                         type="submit" 
@@ -507,11 +517,13 @@ export default function Home() {
                     <Input
                       id="name3"
                       value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      onChange={(e) => setFormData({...formData, name: e.target.value.slice(0, 50)})}
                       placeholder="Введите ваше имя"
                       required
+                      maxLength={50}
                       className="border-[#bbcccc] focus:border-[#104f4f] focus:ring-[#104f4f] rounded-xl"
                     />
+                    <p className="text-xs text-gray-400">{formData.name.length}/50 символов</p>
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="phone3" className="text-[#104f4f]">Телефон</Label>
@@ -519,11 +531,13 @@ export default function Home() {
                       id="phone3"
                       type="tel"
                       value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value.slice(0, 20)})}
                       placeholder="+7 (___) ___-__-__"
                       required
+                      maxLength={20}
                       className="border-[#bbcccc] focus:border-[#104f4f] focus:ring-[#104f4f] rounded-xl"
                     />
+                    <p className="text-xs text-gray-400">{formData.phone.length}/20 символов</p>
                   </div>
                   <Button 
                     type="submit" 
@@ -580,21 +594,44 @@ export default function Home() {
                   <div>
                     <h4 className="font-semibold text-[#104f4f] mb-1">Обратная связь</h4>
                     <p className="text-gray-600">Доступны 24/7</p>
-                    <p className="text-sm text-gray-500">WhatsApp, Telegram</p>
+                    <p className="text-sm text-gray-500">WhatsApp, Telegram, MAX</p>
                   </div>
                 </div>
 
                 <a 
-                  href="https://wa.me/79934559018" 
+                  href="https://max.ru/glad_rostov" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block"
                 >
-                  <Button className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl py-6 text-lg shadow-lg">
+                  <Button className="w-full bg-[#1a1a1a] hover:bg-[#333] text-white rounded-xl py-6 text-lg shadow-lg">
                     <MessageCircle className="w-5 h-5 mr-2" />
-                    Написать в WhatsApp
+                    Написать в MAX
                   </Button>
                 </a>
+
+                <div className="grid grid-cols-2 gap-3">
+                  <a 
+                    href="https://wa.me/79934559018" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <Button variant="outline" className="w-full border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white rounded-xl py-4">
+                      WhatsApp
+                    </Button>
+                  </a>
+                  <a 
+                    href="https://t.me/glad_rostov" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <Button variant="outline" className="w-full border-[#0088cc] text-[#0088cc] hover:bg-[#0088cc] hover:text-white rounded-xl py-4">
+                      Telegram
+                    </Button>
+                  </a>
+                </div>
               </div>
 
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
