@@ -594,12 +594,12 @@ export default function Home() {
                   <div>
                     <h4 className="font-semibold text-[#104f4f] mb-1">Обратная связь</h4>
                     <p className="text-gray-600">Доступны 24/7</p>
-                    <p className="text-sm text-gray-500">MAX</p>
+                    <p className="text-sm text-gray-500">Во всех мессенджерах</p>
                   </div>
                 </div>
 
                 <a 
-                  href="https://max.ru/glad_rostov" 
+                  href="https://max.ru/u/f9LHodD0cOJ6gSNq8sR2OQl554Qu7tRhvejt-oEfRnzz4l8jDrNFLQFvInw" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="block"
