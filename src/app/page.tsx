@@ -594,7 +594,7 @@ export default function Home() {
                   <div>
                     <h4 className="font-semibold text-[#104f4f] mb-1">Обратная связь</h4>
                     <p className="text-gray-600">Доступны 24/7</p>
-                    <p className="text-sm text-gray-500">WhatsApp, Telegram, MAX</p>
+                    <p className="text-sm text-gray-500">MAX</p>
                   </div>
                 </div>
 
@@ -609,29 +609,6 @@ export default function Home() {
                     Написать в MAX
                   </Button>
                 </a>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <a 
-                    href="https://wa.me/79934559018" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <Button variant="outline" className="w-full border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white rounded-xl py-4">
-                      WhatsApp
-                    </Button>
-                  </a>
-                  <a 
-                    href="https://t.me/glad_rostov" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="block"
-                  >
-                    <Button variant="outline" className="w-full border-[#0088cc] text-[#0088cc] hover:bg-[#0088cc] hover:text-white rounded-xl py-4">
-                      Telegram
-                    </Button>
-                  </a>
-                </div>
               </div>
 
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden">

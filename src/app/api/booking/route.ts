@@ -1,15 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { Resend } from 'resend'
-import { SALON_CONFIG } from '@/lib/config'
-
-// Инициализация Resend
-const resend = new Resend(process.env.RESEND_API_KEY)
+import nodemailer from 'nodemailer'
+import { SALON_CONFIG, SMTP_CONFIG } from '@/lib/config'
 
 interface FormData {
   name: string
   phone: string
   service?: string
 }
+
+// Создаем транспорт для отправки email
+const transporter = nodemailer.createTransport({
+  host: SMTP_CONFIG.HOST,
+  port: SMTP_CONFIG.PORT,
+  secure: SMTP_CONFIG.SECURE,
+  auth: {
+    user: SMTP_CONFIG.USER,
+    pass: SMTP_CONFIG.PASSWORD,
+  },
+})
 
 export async function POST(request: NextRequest) {
   try {
@@ -62,21 +70,13 @@ export async function POST(request: NextRequest) {
       </div>
     `
 
-    // Отправка письма через Resend
-    const { data: emailData, error } = await resend.emails.send({
-      from: 'Гладь <onboarding@resend.dev>',
-      to: [SALON_CONFIG.EMAIL],
+    // Отправка письма через SMTP
+    const info = await transporter.sendMail({
+      from: `"${SALON_CONFIG.NAME}" <${SMTP_CONFIG.USER}>`,
+      to: SALON_CONFIG.EMAIL,
       subject: emailSubject,
       html: emailHtml,
     })
-
-    if (error) {
-      console.error('Ошибка отправки email:', error)
-      return NextResponse.json(
-        { success: false, error: 'Ошибка отправки email' },
-        { status: 500 }
-      )
-    }
 
     console.log('========================================')
     console.log('📧 ЗАЯВКА УСПЕШНО ОТПРАВЛЕНА')
@@ -85,13 +85,13 @@ export async function POST(request: NextRequest) {
     console.log(`Имя: ${name}`)
     console.log(`Телефон: ${phone}`)
     if (service) console.log(`Услуга: ${service}`)
-    console.log(`ID письма: ${emailData?.id}`)
+    console.log(`ID письма: ${info.messageId}`)
     console.log('========================================')
 
     return NextResponse.json({ 
       success: true, 
       message: 'Заявка успешно отправлена',
-      emailId: emailData?.id 
+      emailId: info.messageId 
     })
 
   } catch (error) {
